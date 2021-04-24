@@ -7,7 +7,7 @@ export class User
   gender: string;
   password: string;
   coachId: number;
-
+  token: string;
   // tslint:disable-next-line:max-line-length
   constructor(userId: number, firstName: string, lastName: string, email: string, gender: string, password: string, coachId: number) {
     this.userId = userId;

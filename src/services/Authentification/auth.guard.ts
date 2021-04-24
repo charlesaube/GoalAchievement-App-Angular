@@ -10,6 +10,7 @@ export class AuthGuard implements CanActivate {
     private authenticationService: AuthenticationService
   ) { }
 
+  // tslint:disable-next-line:typedef
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser) {
