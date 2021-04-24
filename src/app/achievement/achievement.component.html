@@ -1,0 +1,41 @@
+<p>achievement works!</p>
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>achievementId</th>
+    <th>category Id</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let achievement of achievements">
+    <td><span>{{achievement.achievementId}}</span></td>
+    <td><span>{{achievement.categoryId}}</span></td>
+    <td><span>{{achievement.date}}</span></td>
+    <td><span>{{achievement.description}}</span></td>
+    <td><span>{{achievement.title}}</span></td>
+
+  </tr>
+  </tbody>
+</table>
+
+<style>
+  table, td, th {
+    border: 1px solid black;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    text-align: center;
+  }
+
+
+</style>

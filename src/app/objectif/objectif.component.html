@@ -1,0 +1,43 @@
+
+<p>objectif works!</p>
+<p>{{objectifs[2].objectifName}}</p>
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>category Id</th>
+    <th>Date de fin</th>
+    <th>Is achieved</th>
+    <th>userId</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let objectif of objectifs">
+    <td><span>{{objectif.objectifName}}</span></td>
+    <td><span>{{objectif.categoryId}}</span></td>
+    <td><span>{{objectif.endDate}}</span></td>
+    <td><span>{{objectif.isAchieved}}</span></td>
+    <td><span>{{objectif.userId}}</span></td>
+
+  </tr>
+  </tbody>
+</table>
+
+<style>
+  table, td, th {
+    border: 1px solid black;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    text-align: center;
+  }
+
+
+</style>
