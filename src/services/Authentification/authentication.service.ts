@@ -11,6 +11,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   private user: User;
+  public connected = 'false';
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -22,6 +23,7 @@ export class AuthenticationService {
   }
 
   // tslint:disable-next-line:typedef
+  /*
   login(email: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
       .pipe(map(user => {
@@ -30,7 +32,7 @@ export class AuthenticationService {
         this.currentUserSubject.next(user);
         return user;
       }));
-  }
+  }*/
 
   // tslint:disable-next-line:typedef
   logout() {
@@ -38,4 +40,22 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
+  // tslint:disable-next-line:typedef
+  authenticate(email: string, password: string)
+  {
+    console.log('debut' + this.connected);
+    this.http.post<any>(`${environment.apiUrl}/user/authenticate`, { email, password }, {observe: 'response' as 'body'})
+      .subscribe( user => {
+        this.connected = (user.body);
+      });
+    // tslint:disable-next-line:triple-equals no-conditional-assignment
+    if (this.connected == 'true')
+    {
+      // localStorage.setItem(email, JSON.stringify(email));
+      console.log(this.connected);
+      this.connected = 'true';
+    }
+  }
+
 }

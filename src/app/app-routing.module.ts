@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from '../services/Authentification/auth.guard';
 import {LoginComponent} from './login/login.component';
 import {HeaderComponent} from './header/header.component';
+import {AppComponent} from './app.component';
 
 const routes: Routes = [
   { path: '', component: HeaderComponent, canActivate: [AuthGuard] },
