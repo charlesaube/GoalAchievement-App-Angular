@@ -40,7 +40,7 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
-
+  // authenticate
   // tslint:disable-next-line:typedef
   authenticate(email: string, password: string)
   {
