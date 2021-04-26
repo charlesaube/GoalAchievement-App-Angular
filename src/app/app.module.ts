@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { AchievementComponent } from './achievement/achievement.component';
 import { LoginComponent } from './login/login.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { CoachPageComponent } from './coach-page/coach-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LoginComponent } from './login/login.component';
     ObjectifComponent,
     HeaderComponent,
     AchievementComponent,
-    LoginComponent
+    LoginComponent,
+    UserPageComponent,
+    CoachPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,6 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }

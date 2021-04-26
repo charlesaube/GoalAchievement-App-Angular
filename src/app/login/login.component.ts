@@ -5,7 +5,11 @@ import { first } from 'rxjs/operators';
 import {AuthenticationService} from '../../services/Authentification/authentication.service';
 
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+  selector: 'app-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
+})
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
@@ -50,18 +54,17 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-
     this.authenticationService.authenticate(this.f.username.value, this.f.password.value)
       .pipe(first()).subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['']);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
     /*
-    this.authenticationService.authenticate(this.f.username.value, this.f.password.value);
-    this.router.navigate(['/']);*/
+    this.authenticationService.authenticate(this.f.username.value, this.f.password.value);*/
+    this.router.navigate(['/']);
   }
 }

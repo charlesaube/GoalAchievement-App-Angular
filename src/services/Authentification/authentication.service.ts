@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import {User} from '../../app/model/user.model';
 import {environment} from '../../environments/environment.prod';
+import {Router} from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -13,10 +14,9 @@ export class AuthenticationService {
   private user: User;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,   private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-
   }
 
   public get currentUserValue(): User {
@@ -44,8 +44,9 @@ export class AuthenticationService {
         {
           console.log('User is connected');
           localStorage.setItem('currentUser', JSON.stringify(user));
+          return user;
         }
-        return user;
+
       }));
 
   }
