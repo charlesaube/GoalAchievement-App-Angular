@@ -11,7 +11,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   private user: User;
-  public connected = 'false';
+  public connected = false;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -47,15 +47,15 @@ export class AuthenticationService {
     console.log('debut' + this.connected);
     this.http.post<any>(`${environment.apiUrl}/user/authenticate`, { email, password }, {observe: 'response' as 'body'})
       .subscribe( user => {
-        this.connected = (user.body);
+        this.connected = JSON.parse(user.body);
+        if (this.connected)
+        {
+          // localStorage.setItem(email, JSON.stringify(email));
+          console.log('User is connected');
+          this.connected = true;
+        }
       });
     // tslint:disable-next-line:triple-equals no-conditional-assignment
-    if (this.connected == 'true')
-    {
-      // localStorage.setItem(email, JSON.stringify(email));
-      console.log(this.connected);
-      this.connected = 'true';
-    }
   }
 
 }
