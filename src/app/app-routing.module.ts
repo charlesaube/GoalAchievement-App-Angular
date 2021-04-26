@@ -6,7 +6,7 @@ import {HeaderComponent} from './header/header.component';
 import {AppComponent} from './app.component';
 
 const routes: Routes = [
-  { path: '', component: HeaderComponent, canActivate: [AuthGuard] },
+  { path: '', component: AppComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 
   // otherwise redirect to home
