@@ -9,7 +9,7 @@ import {UserPageComponent} from './user-page/user-page.component';
 const routes: Routes = [
   { path: '', component: AppComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  {path: 'userpage', component: UserPageComponent},
+  {path: 'userpage', component: UserPageComponent, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

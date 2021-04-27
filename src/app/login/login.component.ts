@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/userpage';
   }
 
   // convenience getter for easy access to form fields
@@ -57,14 +57,13 @@ export class LoginComponent implements OnInit {
     this.authenticationService.authenticate(this.f.username.value, this.f.password.value)
       .pipe(first()).subscribe(
         data => {
+          window.location.reload();
           this.router.navigate(['/userpage']);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
-    /*
-    this.authenticationService.authenticate(this.f.username.value, this.f.password.value);*/
-    this.router.navigate(['/']);
+
   }
 }
