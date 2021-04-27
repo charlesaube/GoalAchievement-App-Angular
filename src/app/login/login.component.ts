@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/userpage']);
     }
   }
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.authenticate(this.f.username.value, this.f.password.value)
       .pipe(first()).subscribe(
         data => {
-          this.router.navigate(['']);
+          this.router.navigate(['/userpage']);
         },
         error => {
           this.error = error;

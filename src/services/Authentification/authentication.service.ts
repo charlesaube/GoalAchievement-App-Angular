@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import {User} from '../../app/model/user.model';
 import {environment} from '../../environments/environment.prod';
-import {Router} from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -42,6 +41,7 @@ export class AuthenticationService {
         console.log(user);
         if (this.user.userId != null)
         {
+          this.router.navigate(['/']);
           console.log('User is connected');
           localStorage.setItem('currentUser', JSON.stringify(user));
           return user;
