@@ -1,31 +1,40 @@
-
 <body>
-  <div id="form">
-      <h4 style="text-align: center" id="textLogin">Login</h4>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="formgroup">
-            <label for="username">Email</label>
-            <br>
-            <input placeholder="email" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-              <div *ngIf="f.username.errors.required" class="alert">Email is required</div>
-            </div>
-          </div>
-          <div class="formgroup">
-            <label for="password">Password</label>
-            <br>
-            <input placeholder="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required" class="alert">Password is required</div>
-            </div>
-          </div>
-          <button [disabled]="loading" style="text-align: center">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Login
-          </button>
-          <div *ngIf="error" class="alert alert-danger " style="padding-top: 10px; font-style: italic; font-size: 12px" >*Mot de passe ou email incorrecte</div>
-        </form>
+<div id="form">
+  <h4 style="text-align: center" id="textLogin">Login</h4>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="formgroup">
+      <label for="username">Email</label>
+      <br>
+      <input placeholder="email" type="text" formControlName="username" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required" class="alert">Email is required</div>
       </div>
+    </div>
+    <div class="formgroup">
+      <label for="password">Password</label>
+      <br>
+      <input placeholder="password" type="password" formControlName="password" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required" class="alert">Password is required</div>
+      </div>
+    </div>
+    <button [disabled]="loading" style="text-align: center">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Login
+    </button>
+    <div *ngIf="error" class="alert alert-danger " style="padding-top: 10px; font-style: italic; font-size: 12px">*Mot
+      de passe ou email incorrecte
+    </div>
+    <div class="signup">
+      <p >Don't have an account?</p>
+      <a routerLink="/signup">sign up!</a>
+    </div>
+  </form>
+
+</div>
+
 
 </body>
 

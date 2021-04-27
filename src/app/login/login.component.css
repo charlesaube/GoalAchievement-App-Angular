@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   background-color: white;
   color:black;
-  padding-bottom: 2%;
+  padding-bottom: 12px;
   border-style: solid;
   border-radius: 10px;
   border-width: 0px;
@@ -61,3 +61,18 @@ input {
 .formgroup{
   margin-bottom: 20px;
 }
+
+.signup {
+  margin-top: 50px;
+  font-size: 12px;
+  text-align: center;
+}
+.signup p{
+  display: inline;
+}
+.signup a{
+  padding-left: 2px;
+  text-decoration: none;
+  color: #00bdff;
+}
+
