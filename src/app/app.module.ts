@@ -11,6 +11,7 @@ import { AchievementComponent } from './achievement/achievement.component';
 import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { CoachPageComponent } from './coach-page/coach-page.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CoachPageComponent } from './coach-page/coach-page.component';
     LoginComponent,
     UserPageComponent,
     CoachPageComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,6 @@ import {AuthenticationService} from '../../services/Authentification/authenticat
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
   submitted = false;
   returnUrl: string;
   error = '';
@@ -53,7 +52,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.authenticationService.authenticate(this.f.username.value, this.f.password.value)
       .pipe(first()).subscribe(
         data => {
@@ -62,7 +60,6 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.error = error;
-          this.loading = false;
         });
 
   }

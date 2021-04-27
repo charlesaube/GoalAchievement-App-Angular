@@ -20,15 +20,14 @@
         <div *ngIf="f.password.errors.required" class="alert">Password is required</div>
       </div>
     </div>
-    <button [disabled]="loading" style="text-align: center">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    <button style="text-align: center">
       Login
     </button>
     <div *ngIf="error" class="alert alert-danger " style="padding-top: 10px; font-style: italic; font-size: 12px">*Mot
       de passe ou email incorrecte
     </div>
     <div class="signup">
-      <p >Don't have an account?</p>
+      <p>Don't have an account?</p>
       <a routerLink="/signup">sign up!</a>
     </div>
   </form>
