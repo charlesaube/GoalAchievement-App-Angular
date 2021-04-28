@@ -126,7 +126,7 @@ div.scrollmenu {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 1000px;
+  width: 1500px;
 }
 
 
@@ -258,13 +258,10 @@ div.scrollmenu {
 }
 .check-card input[type=checkbox]:checked ~ .check-card-body .check-card-cancel {
   bottom: 30px;
-  background-color: #2e2d37AA;
+  background-color: #00beffCC;
 
 }
-.check-card input[type=checkbox]:checked ~ .check-card-item {
-  color: blue;
-  filter: blur(20px);
-}
+
 
 
 /* scrollable form */
