@@ -1,7 +1,9 @@
 
 <nav class="topnav" >
   <div class="">
-    <a  routerLink="/userpage">Home</a>
-    <a  style="float: right"(click)="logout()">Logout</a>
+
+    <th><a style="color: #f2f2f2"  routerLink="/userpage">Home</a></th>
+    <th style="float: right"><a  (click)="logout()">Logout</a></th>
+    <th >{{user.firstName}}'s page</th>
   </div>
 </nav>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../model/user.model';
+import {UserService} from '../../services/userService/user.service';
 
 @Component({
   selector: 'app-user-page',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
-
-  constructor( ) { }
+  user: User;
+  userService: UserService;
+  constructor( ) {
+    this.user = JSON.parse(localStorage.getItem('currentUser')).body;
+  }
 
   ngOnInit(): void {
+  }
+
+  // tslint:disable-next-line:typedef
+  addObjectif(){
+
   }
 
 }
