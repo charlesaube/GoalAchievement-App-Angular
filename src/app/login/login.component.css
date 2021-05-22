@@ -52,6 +52,7 @@ input {
 #textLogin{
   font-size: 25px;
   font-weight: 350;
+  margin-top: 20px;
 }
 
 .alert{

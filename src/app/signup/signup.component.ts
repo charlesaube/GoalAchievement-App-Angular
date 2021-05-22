@@ -11,7 +11,7 @@ import {UserService} from '../../services/userService/user.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  loginForm: FormGroup;
+  signUpForm: FormGroup;
   submitted = false;
   returnUrl: string;
   error = '';
@@ -28,17 +28,21 @@ export class SignupComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+    this.signUpForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      gender: null,
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      coachId: 0
+
     });
 
   }
 
   // convenience getter for easy access to form fields
   // tslint:disable-next-line:typedef
-  get f() { return this.loginForm.controls; }
+  get f() { return this.signUpForm.controls; }
 
 
   // tslint:disable-next-line:typedef
@@ -46,13 +50,23 @@ export class SignupComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.signUpForm.invalid) {
 
       return;
     }
 
-    this.userService.postUser(this.f.username.value, this.f.password.value);
-    console.log("ok");
+    // Je n'arrive pas a retourner la valeur du check box selectionner
+    this.userService.postUserComplete(2, this.f.firstName.value, this.f.lastName.value, this.f.email.value,
+      // tslint:disable-next-line:max-line-length
+      this.f.password.value, this.f.gender.value, /*this.f.coachId.value*/ +document.getElementById('check01').getAttribute('value')).subscribe(
+      data => {
+        this.router.navigate(['/login']);
+      },
+      error => {
+        this.error = error;
+      });
+
+    console.log('ok');
   }
 
 }
