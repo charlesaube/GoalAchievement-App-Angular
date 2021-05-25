@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { CoachPageComponent } from './coach-page/coach-page.component';
 import { SignupComponent } from './signup/signup.component';
-import { AddObjectifComponent } from './add-objectif/add-objectif.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,14 +23,14 @@ import { AddObjectifComponent } from './add-objectif/add-objectif.component';
     LoginComponent,
     UserPageComponent,
     CoachPageComponent,
-    SignupComponent,
-    AddObjectifComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent, LoginComponent]

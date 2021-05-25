@@ -11,7 +11,7 @@
   <div style="float: left; width: 45%; margin-right: 10px">
     <div>
       <h1 style="display: inline-table; margin-bottom: 10px">Objectif</h1>
-      <a style="float: right; margin-top: 20px" class="btn btn-primary" routerLink="/addObjectif">Ajouter</a>
+      <button (click)="open(content)" style="float: right; margin-top: 20px" class="btn btn-primary">Ajouter</button>
     </div>
     <app-objectif></app-objectif>
   </div>
@@ -21,6 +21,33 @@
     <app-objectif></app-objectif>
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouté un objectif</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
 
 
 
