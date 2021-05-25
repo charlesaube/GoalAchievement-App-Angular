@@ -1,6 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+        crossorigin="anonymous"></script>
+
 <app-header></app-header>
-<p>user-page works!</p>
 
-<p>{{user.firstName}}</p>
+<div id="container">
+  <div style="float: left; width: 45%; margin-right: 10px">
+    <div>
+      <h1 style="display: inline-table; margin-bottom: 10px">Objectif</h1>
+      <a style="float: right; margin-top: 20px" class="btn btn-primary" routerLink="/addObjectif">Ajouter</a>
+    </div>
+    <app-objectif></app-objectif>
+  </div>
+  <div style=" width: 45%; margin-left: 10px; float: right">
+    <h1>Objectif</h1>
 
-<p>ad</p>
+    <app-objectif></app-objectif>
+  </div>
+</div>
+
+
+
+

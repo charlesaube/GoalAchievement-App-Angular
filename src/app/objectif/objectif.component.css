@@ -1,1 +1,53 @@
+body {
+  /*border-style: solid;*/
+  /*border-width: 2px;*/
+  /*border-color: #2e2d37;*/
+  border-radius: 4px;
+  box-shadow: 1px 1px 100px  blueviolet;
 
+}
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  box-sizing: content-box;
+  padding-left: 20px;
+
+}
+li {
+
+  margin-right: 20px;
+  border-style: solid;
+  border-color: darkgrey;
+  margin-top: 25px;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 10px;
+}
+#checkbox {
+  margin-right: 10px;
+  color: #00bdff;
+}
+
+button{
+  background-color: white;
+  border: none;
+  color: grey;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

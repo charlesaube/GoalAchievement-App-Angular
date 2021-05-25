@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { CoachPageComponent } from './coach-page/coach-page.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddObjectifComponent } from './add-objectif/add-objectif.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SignupComponent } from './signup/signup.component';
     UserPageComponent,
     CoachPageComponent,
     SignupComponent,
+    AddObjectifComponent,
   ],
   imports: [
     BrowserModule,
