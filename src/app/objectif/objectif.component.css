@@ -47,7 +47,14 @@ button{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 25px;
-  margin: 4px 2px;
+
+  cursor: pointer;
+}
+
+#delete{
+  font-size: 17px;
+  color: red;
+  margin-left: 15px;
+  margin-right: 5px;
   cursor: pointer;
 }

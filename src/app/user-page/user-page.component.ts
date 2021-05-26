@@ -18,7 +18,6 @@ import {ObjectifService} from '../../services/objectifService/objectif.service';
 export class UserPageComponent implements OnInit {
   user: User;
   userService: UserService;
-  objectifService: ObjectifService;
   objectifForm: FormGroup;
   closeResult: string;
   categories: Category[] = [];
@@ -27,10 +26,12 @@ export class UserPageComponent implements OnInit {
 
 
 
+
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private objectifService: ObjectifService) {
 
     this.user = JSON.parse(localStorage.getItem('currentUser')).body;
   }
@@ -71,17 +72,25 @@ export class UserPageComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
+  private dateToString = (date) => `${date.year}-${date.month}-${date.day}`;
   // tslint:disable-next-line:typedef
   onSubmit(){
     this.submitted = true;
-    console.log(this.objectifForm.invalid);
     // stop here if form is invalid
     if (this.objectifForm.invalid) {
       return;
     }
-    console.log(this.f.categoryId.value);
-    //this.objectifService.postObjectif();
+    const formatDate = this.dateToString(this.f.endDate.value);
+    console.log(formatDate);
+    // tslint:disable-next-line:max-line-length label-position no-unused-expression
+
+    this.objectifService.postObjectif(this.f.objectifName.value, this.f.categoryId.value, formatDate, this.user.userId).subscribe(
+      data => {
+      },
+      error => {
+        this.error = error;
+      });
+    location.reload();
 
 
   }
@@ -89,3 +98,7 @@ export class UserPageComponent implements OnInit {
 
 
 }
+
+
+
+
