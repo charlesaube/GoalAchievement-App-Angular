@@ -58,10 +58,10 @@ export class UserPageComponent implements OnInit {
       date: '',
       categoryId: 'default'
     });
-    this.objectifService.getObjectifByUserId(this.user.userId).subscribe( count =>{
+    this.objectifService.getObjectifByUserId(this.user.userId).subscribe( count => {
       this.objectifCount = count.body.length;
     });
-    this.achievementService.getAchievementByUserId(this.user.userId).subscribe( count =>{
+    this.achievementService.getAchievementByUserId(this.user.userId).subscribe( count => {
       this.achievementCount = count.body.length;
     });
 
@@ -109,7 +109,7 @@ export class UserPageComponent implements OnInit {
       error => {
         this.error = error;
       });
-      location.reload();
+    location.reload();
   }
 
   // tslint:disable-next-line:typedef

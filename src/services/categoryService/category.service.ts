@@ -13,6 +13,10 @@ export class CategoryService {
   getAllCategory(): Observable<any>{
     return this.http.get(`${this.API_URL}/all`, {observe: 'response'});
   }
+  getCategoryById(id: number): Observable<any>
+  {
+    return this.http.get(`${this.API_URL}/` + id, {observe: 'response'});
+  }
 
 
 }

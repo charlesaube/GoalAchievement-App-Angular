@@ -4,6 +4,7 @@ import {Objectif} from '../model/objectif.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {User} from '../model/user.model';
+import {AchievementService} from '../../services/AchievementService/achievement.service';
 
 @Component({
   selector: 'app-objectif',
@@ -17,7 +18,8 @@ export class ObjectifComponent implements OnInit {
   user: User;
 
   constructor(
-    private objectifService: ObjectifService) {
+    private objectifService: ObjectifService,
+    private achievementService: AchievementService) {
     this.user = JSON.parse(localStorage.getItem('currentUser')).body;
     }
 
@@ -36,6 +38,22 @@ export class ObjectifComponent implements OnInit {
   deleteObjectifById(id: number): void{
    this.objectifService.deleteObjectif(id).subscribe();
    location.reload();
+
+  }
+  stringToDate(str: string): Date{
+    return new Date(str);
+  }
+  private dateToString = (date) => `${date.year}-${date.month}-${date.day}`;
+
+  achieved(objectif: Objectif): void{
+
+    const formatDate = this.dateToString(objectif.endDate);
+    console.log(objectif.endDate);
+
+    // tslint:disable-next-line:max-line-length
+    this.achievementService.postAchievement(objectif.objectifName, '', objectif.categoryId, objectif.endDate.toString(), this.user.userId).subscribe();
+
+    this.deleteObjectifById(objectif.objectifId);
 
   }
 

@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<body>
+<div id="container" >
+  <div class="chart pieChart data"   >
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend" style="width: 200px; height: 200px;">
+    </canvas>
+
+  </div>
+  <div class="data">
+    <h4>Pourcentage d'objectifs accompli</h4>
+    <span> <h2 >{{pourcentageAccomplissement()}} %</h2> </span>
+  </div>
+  <div class="data">
+    <h4>Accompli au dernier mois</h4>
+    <span> <h2 >{{achievementForLastMonth()}} </h2> </span>
+  </div>
+  <div class="data">
+    <h4>Objectif Échoué</h4>
+    <span> <h2 >{{failedObjectif()}} </h2> </span>
+  </div>
+</div>
+
+</body>
+
