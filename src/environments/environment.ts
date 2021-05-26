@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api',
-  user : JSON.parse(localStorage.getItem('currentUser')).body
+  apiUrl: 'http://localhost:8080/api'
 };
 
 /*

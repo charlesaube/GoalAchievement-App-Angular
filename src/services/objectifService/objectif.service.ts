@@ -22,4 +22,13 @@ export class ObjectifService {
 
     return this.http.get(`${this.API_URL}/userId/` + id, {observe: 'response'});
   }
+
+  postObjectif(objectifName: string, categoryId: number): Observable<any>
+  {
+    // tslint:disable-next-line:label-position
+
+    // tslint:disable-next-line:label-position
+
+    return this.http.post(`${this.API_URL}/add`, {observe: 'response'});
+  }
 }

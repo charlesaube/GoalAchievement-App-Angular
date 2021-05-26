@@ -14,9 +14,11 @@ export class ObjectifComponent implements OnInit {
   objectifs: Objectif[] = [];
   number = this.objectifs.length;
   today: number = Date.now();
+  user: User;
 
   constructor(
     private objectifService: ObjectifService) {
+    this.user = JSON.parse(localStorage.getItem('currentUser')).body;
     }
 
   ngOnInit(): void {
@@ -25,8 +27,8 @@ export class ObjectifComponent implements OnInit {
     //   console.log(objectif.body);
     //   this.objectifs = objectif.body;
     // });
-    this.objectifService.getObjectifByUserId(environment.user.userId).subscribe(objectif =>  {
-      console.log(objectif.body);
+    this.objectifService.getObjectifByUserId(this.user.userId).subscribe(objectif =>  {
+
       this.objectifs = objectif.body;
     });
 
