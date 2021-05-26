@@ -21,8 +21,12 @@ export class ObjectifService {
 
   postObjectif( objectifName: string, categoryId: number, endDate: string, userId: number): Observable<any>
   {
-    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date().toLocaleDateString(),
-      endDate, isAchivied: 0, categoryId, userId}, {observe: 'response'});
+    console.log(objectifName);
+    console.log(categoryId);
+    console.log(userId);
+    // tslint:disable-next-line:max-line-length
+    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date(endDate).toLocaleDateString(),
+      endDate: new Date(endDate).toLocaleDateString().valueOf() , isAchieved: 0, categoryId, userId}, {observe: 'response'});
 
   }
   deleteObjectif( id: number): Observable<any>
@@ -36,7 +40,7 @@ interface ObjectifArticle {
   objectifName: string;
   startDate: string;
   endDate: string;
-  isAchivied: number;
+  isAchieved: number;
   categoryId: number;
   userId: number;
 

@@ -21,8 +21,7 @@ export class AchievementService {
   }
   postAchievement( title: string, description: string, categoryId: number, date: string, userId: number): Observable<any>
   {
-    console.log(title);
-    return this.http.post<AchievementArticle>(`${this.API_URL}/add`, {achievementId: 0, title, description, date,
+    return this.http.post<AchievementArticle>(`${this.API_URL}/add`, {achievementId: 0, title, description,  date: new Date(date).toLocaleDateString().valueOf(),
       userId, categoryId}, {observe: 'response'});
 
   }

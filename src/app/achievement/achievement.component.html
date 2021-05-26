@@ -2,17 +2,22 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 <body>
-<div style="margin-top: 25px; margin-bottom: 25px; ">
-  <ul *ngFor="let achievement of achievements">
-    <li>
-      <span>{{achievement.title}}</span>
-      <div style="float: right">
-        <span style="margin-right: 5px; color: darkgray">Expire:</span>
-        <span>{{achievement.date}}</span>
-        <span id="delete" (click)="deleteAchievementById(achievement.achievementId)">x</span>
-      </div>
-    </li>
-  </ul>
+<div   style="overflow: auto; height: 400px " >
+  <div style="margin-top: 25px; margin-bottom: 25px; ">
+   <p id="empty" *ngIf="achievements.length == 0">Aucun accomplissement</p>
+    <ul *ngFor="let achievement of achievements" >
+      <li>
+        <span>{{achievement.title}}</span>
+        <div style="float: right">
+          <span style="margin-right: 5px; color: darkgray">Expire:</span>
+          <span>{{achievement.date}}</span>
+          <span id="delete" (click)="deleteAchievementById(achievement.achievementId)">x</span>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
+
+
 </body>
 

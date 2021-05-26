@@ -21,6 +21,8 @@ export class UserPageComponent implements OnInit {
   userService: UserService;
   objectifForm: FormGroup;
   achievementForm: FormGroup;
+  objectifCount: number;
+  achievementCount: number;
   closeResult: string;
   categories: Category[] = [];
   submitted = false;
@@ -37,6 +39,7 @@ export class UserPageComponent implements OnInit {
     private achievementService: AchievementService) {
 
     this.user = JSON.parse(localStorage.getItem('currentUser')).body;
+
   }
 
   ngOnInit(): void {
@@ -55,6 +58,13 @@ export class UserPageComponent implements OnInit {
       date: '',
       categoryId: 'default'
     });
+    this.objectifService.getObjectifByUserId(this.user.userId).subscribe( count =>{
+      this.objectifCount = count.body.length;
+    });
+    this.achievementService.getAchievementByUserId(this.user.userId).subscribe( count =>{
+      this.achievementCount = count.body.length;
+    });
+
   }
 
   // tslint:disable-next-line:typedef
@@ -92,14 +102,14 @@ export class UserPageComponent implements OnInit {
     console.log(formatDate);
     // tslint:disable-next-line:max-line-length label-position no-unused-expression
 
+    // tslint:disable-next-line:max-line-length
     this.objectifService.postObjectif(this.objectifFormSubmitted.objectifName.value, this.objectifFormSubmitted.categoryId.value, formatDate, this.user.userId).subscribe(
       data => {
       },
       error => {
         this.error = error;
       });
-    location.reload();
-
+      location.reload();
   }
 
   // tslint:disable-next-line:typedef

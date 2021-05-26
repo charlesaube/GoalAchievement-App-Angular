@@ -28,7 +28,6 @@ export class ObjectifComponent implements OnInit {
     //   this.objectifs = objectif.body;
     // });
     this.objectifService.getObjectifByUserId(this.user.userId).subscribe(objectif =>  {
-
       this.objectifs = objectif.body;
     });
 
