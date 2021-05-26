@@ -1,0 +1,30 @@
+body {
+
+  border-radius: 4px;
+  box-shadow: 1px 1px 100px  blueviolet;
+
+}
+ul {
+  list-style-type: none;
+  box-sizing: content-box;
+  padding-left: 20px;
+
+}
+li {
+
+  margin-right: 20px;
+  border-style: solid;
+  border-color: darkgrey;
+  margin-top: 25px;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+#delete{
+  font-size: 17px;
+  color: red;
+  margin-left: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+}

@@ -16,20 +16,13 @@ export class ObjectifService {
   }
   getObjectifByUserId(id: number): Observable<any>
   {
-    // tslint:disable-next-line:label-position
-
-    // tslint:disable-next-line:label-position
-
     return this.http.get(`${this.API_URL}/userId/` + id, {observe: 'response'});
   }
 
   postObjectif( objectifName: string, categoryId: number, endDate: string, userId: number): Observable<any>
   {
-
-    console.log(endDate);
-
-    // tslint:disable-next-line:max-line-length
-    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date().toLocaleDateString(), endDate: new Date().toLocaleDateString(), isAchivied: 0, categoryId, userId}, {observe: 'response'});
+    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date().toLocaleDateString(),
+      endDate, isAchivied: 0, categoryId, userId}, {observe: 'response'});
 
   }
   deleteObjectif( id: number): Observable<any>

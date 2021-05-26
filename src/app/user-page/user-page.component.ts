@@ -9,6 +9,7 @@ import {environment} from '../../environments/environment';
 import {CategoryService} from '../../services/categoryService/category.service';
 import {first} from 'rxjs/operators';
 import {ObjectifService} from '../../services/objectifService/objectif.service';
+import {AchievementService} from '../../services/AchievementService/achievement.service';
 
 @Component({
   selector: 'app-user-page',
@@ -19,6 +20,7 @@ export class UserPageComponent implements OnInit {
   user: User;
   userService: UserService;
   objectifForm: FormGroup;
+  achievementForm: FormGroup;
   closeResult: string;
   categories: Category[] = [];
   submitted = false;
@@ -31,7 +33,8 @@ export class UserPageComponent implements OnInit {
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private objectifService: ObjectifService) {
+    private objectifService: ObjectifService,
+    private achievementService: AchievementService) {
 
     this.user = JSON.parse(localStorage.getItem('currentUser')).body;
   }
@@ -46,14 +49,19 @@ export class UserPageComponent implements OnInit {
       endDate: '',
       categoryId: 'default'
     });
-
-
+    this.achievementForm = this.formBuilder.group({
+      achievementName: '',
+      description: '',
+      date: '',
+      categoryId: 'default'
+    });
   }
 
   // tslint:disable-next-line:typedef
+  get objectifFormSubmitted() { return this.objectifForm.controls; }
 
   // tslint:disable-next-line:typedef
-  get f() { return this.objectifForm.controls; }
+  get achievementFormSubmitted()  { return this.achievementForm.controls; }
   // tslint:disable-next-line:typedef
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -74,17 +82,43 @@ export class UserPageComponent implements OnInit {
   }
   private dateToString = (date) => `${date.year}-${date.month}-${date.day}`;
   // tslint:disable-next-line:typedef
-  onSubmit(){
+  onSubmitObjectif(){
     this.submitted = true;
     // stop here if form is invalid
     if (this.objectifForm.invalid) {
       return;
     }
-    const formatDate = this.dateToString(this.f.endDate.value);
+    const formatDate = this.dateToString(this.objectifFormSubmitted.endDate.value);
     console.log(formatDate);
     // tslint:disable-next-line:max-line-length label-position no-unused-expression
 
-    this.objectifService.postObjectif(this.f.objectifName.value, this.f.categoryId.value, formatDate, this.user.userId).subscribe(
+    this.objectifService.postObjectif(this.objectifFormSubmitted.objectifName.value, this.objectifFormSubmitted.categoryId.value, formatDate, this.user.userId).subscribe(
+      data => {
+      },
+      error => {
+        this.error = error;
+      });
+    location.reload();
+
+  }
+
+  // tslint:disable-next-line:typedef
+  onSubmitAchievement(){
+    this.submitted = true;
+    console.log(this.achievementFormSubmitted.description.value);
+    // stop here if form is invalid
+    if (this.objectifForm.invalid) {
+      return;
+    }
+    const formatDate = this.dateToString(this.achievementFormSubmitted.date.value);
+    console.log(formatDate);
+    // tslint:disable-next-line:max-line-length label-position no-unused-expression
+
+    this.achievementService.postAchievement(this.achievementFormSubmitted.achievementName.value,
+      this.achievementFormSubmitted.description.value,
+      this.achievementFormSubmitted.categoryId.value,
+      formatDate,
+      this.user.userId).subscribe(
       data => {
       },
       error => {

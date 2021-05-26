@@ -35,9 +35,8 @@ export class ObjectifComponent implements OnInit {
   }
 
   deleteObjectifById(id: number): void{
-   location.reload();
    this.objectifService.deleteObjectif(id).subscribe();
-
+   location.reload();
 
   }
 

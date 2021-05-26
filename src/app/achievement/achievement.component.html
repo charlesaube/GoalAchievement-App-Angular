@@ -1,41 +1,18 @@
-<p>achievement works!</p>
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<body>
+<div style="margin-top: 25px; margin-bottom: 25px; ">
+  <ul *ngFor="let achievement of achievements">
+    <li>
+      <span>{{achievement.title}}</span>
+      <div style="float: right">
+        <span style="margin-right: 5px; color: darkgray">Expire:</span>
+        <span>{{achievement.date}}</span>
+        <span id="delete" (click)="deleteAchievementById(achievement.achievementId)">x</span>
+      </div>
+    </li>
+  </ul>
+</div>
+</body>
 
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th>achievementId</th>
-    <th>category Id</th>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Title</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let achievement of achievements">
-    <td><span>{{achievement.achievementId}}</span></td>
-    <td><span>{{achievement.categoryId}}</span></td>
-    <td><span>{{achievement.date}}</span></td>
-    <td><span>{{achievement.description}}</span></td>
-    <td><span>{{achievement.title}}</span></td>
-
-  </tr>
-  </tbody>
-</table>
-
-<style>
-  table, td, th {
-    border: 1px solid black;
-  }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td {
-    text-align: center;
-  }
-
-
-</style>
