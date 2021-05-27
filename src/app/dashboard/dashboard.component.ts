@@ -53,7 +53,6 @@ export class DashboardComponent implements OnInit {
     private achievementService: AchievementService) {
 
     this.user = JSON.parse(localStorage.getItem('currentUser')).body;
-    this.pieChartLabels = this.getCategoriesName();
   }
 
   ngOnInit(): void {
@@ -65,7 +64,6 @@ export class DashboardComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(category => {
       this.categories = category.body;
 
-      //this.pieChartLabels = this.getCategoriesName();
       this.pieChartData = this.getCategoriesValue();
     });
 
@@ -105,13 +103,7 @@ export class DashboardComponent implements OnInit {
     return failed;
 
   }
-  getCategoriesName(): string[]{
-    const array: string[] = [];
-    for (let category of this.categories){
-      array.push(category.categoryName);
-    }
-    return array;
-  }
+
   getCategoriesValue(): number[] {
     const array: number[] = [];
     let temp: Objectif[] = [];
@@ -124,11 +116,9 @@ export class DashboardComponent implements OnInit {
           array.push(temp.length);
           this.pieChartLabels.push(category.categoryName);
         }
+
       });
     }
-    console.log(array);
-    console.log(this.pieChartLabels);
-
     return array;
   }
 
