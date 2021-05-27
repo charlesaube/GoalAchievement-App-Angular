@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(category => {
       this.categories = category.body;
 
-      this.pieChartLabels = this.getCategoriesName();
+      //this.pieChartLabels = this.getCategoriesName();
       this.pieChartData = this.getCategoriesValue();
     });
 
@@ -117,11 +117,17 @@ export class DashboardComponent implements OnInit {
     let temp: Objectif[] = [];
 
     for (let category of this.categories){
+      console.log(category.categoryId);
       this.objectifService.getObjectifByUserIdAndCategoryId(this.user.userId, category.categoryId).subscribe(objectifs => {
         temp = objectifs.body;
-        array.push(temp.length);
+        if (temp.length > 0) {
+          array.push(temp.length);
+          this.pieChartLabels.push(category.categoryName);
+        }
       });
     }
+    console.log(array);
+    console.log(this.pieChartLabels);
 
     return array;
   }
