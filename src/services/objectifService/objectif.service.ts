@@ -37,10 +37,10 @@ export class ObjectifService {
   }
   postObjectif( objectifName: string, categoryId: number, endDate: string, userId: number): Observable<any>
   {
-
-    console.log(this.datePipe.transform(new Date(endDate).toLocaleDateString(), 'yyyy/MM/dd'));
-    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date(endDate).toLocaleDateString(),
-      endDate: new Date(endDate).toLocaleDateString().valueOf() , isAchieved: 0, categoryId, userId}, this.optionRequete);
+    const startDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd').toString();
+    endDate = this.datePipe.transform(new Date(endDate), 'yyyy-MM-dd').toString();
+    return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName, startDate,
+      endDate, isAchieved: 0, categoryId, userId}, this.optionRequete);
 
   }
   deleteObjectif( id: number): Observable<any>

@@ -22,8 +22,9 @@ export class AchievementComponent implements OnInit {
   }
 
   deleteAchievementById(id: number): void{
-    this.achievementService.deleteAchievementById(id).subscribe();
-    location.reload();
+    this.achievementService.deleteAchievementById(id).subscribe( resp => {
+      location.reload();
+    });
   }
 
 }

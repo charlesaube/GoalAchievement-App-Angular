@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment.prod';
+import {DatePipe} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AchievementService {
     observe: 'response' as "body"
   };
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient, private datePipe: DatePipe) { }
 
   getAllAchievement(): Observable<any>
   {
@@ -30,7 +31,8 @@ export class AchievementService {
   }
   postAchievement( title: string, description: string, categoryId: number, date: string, userId: number): Observable<any>
   {
-    return this.http.post<AchievementArticle>(`${this.API_URL}/add`, {achievementId: 0, title, description,  date: new Date(date).toLocaleDateString().valueOf(),
+    date = this.datePipe.transform(new Date(date), 'yyyy-MM-dd').toString();
+    return this.http.post<AchievementArticle>(`${this.API_URL}/add`, {achievementId: 0, title, description,  date,
       userId, categoryId}, this.optionRequete);
 
   }

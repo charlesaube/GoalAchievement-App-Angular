@@ -104,11 +104,11 @@ export class UserPageComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.objectifService.postObjectif(this.objectifFormSubmitted.objectifName.value, this.objectifFormSubmitted.categoryId.value, formatDate, this.user.userId).subscribe(
       data => {
+        location.reload();
       },
       error => {
         this.error = error;
       });
-    //location.reload();
   }
 
   // tslint:disable-next-line:typedef
@@ -129,13 +129,11 @@ export class UserPageComponent implements OnInit {
       formatDate,
       this.user.userId).subscribe(
       data => {
+        location.reload();
       },
       error => {
         this.error = error;
       });
-    location.reload();
-
-
   }
 
 

@@ -36,9 +36,9 @@ export class ObjectifComponent implements OnInit {
   }
 
   deleteObjectifById(id: number): void{
-   this.objectifService.deleteObjectif(id).subscribe();
-   location.reload();
-
+   this.objectifService.deleteObjectif(id).subscribe(resp => {
+     location.reload();
+   });
   }
   stringToDate(str: string): Date{
     return new Date(str);
@@ -47,7 +47,6 @@ export class ObjectifComponent implements OnInit {
 
   achieved(objectif: Objectif): void{
 
-    const formatDate = this.dateToString(objectif.endDate);
     console.log(objectif.endDate);
 
     // tslint:disable-next-line:max-line-length
