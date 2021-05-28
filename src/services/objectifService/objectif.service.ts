@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment.prod';
 import {map, tap} from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class ObjectifService {
     observe: 'response' as "body"
   };
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient,
+               private datePipe: DatePipe) { }
 
   getAllObjectif(): Observable<any>
   {
@@ -36,7 +38,7 @@ export class ObjectifService {
   postObjectif( objectifName: string, categoryId: number, endDate: string, userId: number): Observable<any>
   {
 
-    // tslint:disable-next-line:max-line-length
+    console.log(this.datePipe.transform(new Date(endDate).toLocaleDateString(), 'yyyy/MM/dd'));
     return this.http.post<ObjectifArticle>(`${this.API_URL}/add`, {objectifId: 0, objectifName,  startDate: new Date(endDate).toLocaleDateString(),
       endDate: new Date(endDate).toLocaleDateString().valueOf() , isAchieved: 0, categoryId, userId}, this.optionRequete);
 

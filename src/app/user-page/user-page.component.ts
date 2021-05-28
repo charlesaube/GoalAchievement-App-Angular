@@ -99,7 +99,6 @@ export class UserPageComponent implements OnInit {
       return;
     }
     const formatDate = this.dateToString(this.objectifFormSubmitted.endDate.value);
-    console.log(formatDate);
     // tslint:disable-next-line:max-line-length label-position no-unused-expression
 
     // tslint:disable-next-line:max-line-length
@@ -109,7 +108,7 @@ export class UserPageComponent implements OnInit {
       error => {
         this.error = error;
       });
-    location.reload();
+    //location.reload();
   }
 
   // tslint:disable-next-line:typedef

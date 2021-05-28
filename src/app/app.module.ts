@@ -15,6 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ChartsModule} from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,9 +36,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }
