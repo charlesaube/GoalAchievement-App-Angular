@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://colval-api.herokuapp.com/api'
+  apiUrl: 'https://colval-api.herokuapp.com/api',
 };
 
 /*
