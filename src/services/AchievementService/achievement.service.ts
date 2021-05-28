@@ -25,7 +25,7 @@ export class AchievementService {
 
   getAchievementByUserId(id: number): Observable<any>
   {
-    console.log(environment.apiToken);
+
     return this.http.get(`${this.API_URL}/userId/` + id, this.optionRequete);
   }
   postAchievement( title: string, description: string, categoryId: number, date: string, userId: number): Observable<any>
